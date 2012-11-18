@@ -34,13 +34,9 @@
 ;; accurate anymore.
 
 ;; configure these:
-(defvar default-mode (list "HTML" 'html-mode))
+(defvar default-mode (list "LaTeX" 'latex-mode))
 (defvar second-modes (list
-		      (list "Erlang" "<erl>" "</erl>" 'erlang-mode)
-                      (list "C++" "<?php" "?>" 'c++-mode)
-                      (list "Python" "<?python" "?>" 'python-mode)
-		      (list "Tcl" "<?" "?>" 'tcl-mode)
-		      (list "Ruby" "<%" "%>" 'ruby-mode)
+		      (list "Agda" "\\begin{code" "\\end{code" 'agda2-mode)
 		      ))
 ;; ----------------
 

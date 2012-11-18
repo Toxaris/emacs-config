@@ -6,8 +6,19 @@
       w32-rwindow-modifier 'super ; Right Windows key 
       w32-apps-modifier 'hyper) ; Menu key
 
-; enable input method for buffers with text files
-(add-hook 'text-mode-hook 'toggle-input-method)
+; CONFIGURE INPUT METHODS
+; =======================
+
+(defun disable-input-method ()
+  (when current-input-method
+    (toggle-input-method)))
+
+(defun enable-input-method ()
+  (when (not current-input-method)
+    (toggle-input-method)))
+
+(add-hook 'text-mode-hook 'enable-input-method)
+(add-hook 'tex-mode-hook 'disable-input-method)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -20,7 +31,8 @@
  '(cua-enable-cua-keys t)
  '(cua-mode t nil (cua-base))
  '(default-input-method "Agda")
- '(fill-column 65))
+ '(fill-column 65)
+ '(tex-fontify-script nil))
 
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
@@ -32,5 +44,16 @@
  '(italic ((t (:underline nil :slant italic))))
  '(variable-pitch ((t (:family "FreeSerif")))))
 
+(add-to-list 'load-path user-emacs-directory)
+
+; Prepare for loading Agda mode and load Agda input method
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
+
+(require 'agda-input)
+
+; configure two-mode for literate agda
+(require 'two-mode-mode)
+
+(add-to-list 'auto-mode-alist
+  '("\\.lagda\\'" . two-mode-mode))
