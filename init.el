@@ -26,7 +26,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(agda2-ghci-options (quote ("-package Agda-2.3.0")))
- '(agda2-include-dirs (quote ("." "C:\\Program Files (x86)\\Agda\\2.3.0\\lib-0.6\\src")))
+ '(agda2-include-dirs (quote ("." "c:\\Users\\rendel\\Documents\\agda-lib\\src")))
  '(cua-auto-tabify-rectangles nil)
  '(cua-enable-cua-keys t)
  '(cua-mode t nil (cua-base))
