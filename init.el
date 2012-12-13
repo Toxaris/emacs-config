@@ -1,3 +1,15 @@
+; SEARCH PATH
+; ===========
+
+(add-to-list 'load-path user-emacs-directory)
+
+
+; GENERIC MODE
+; ============
+
+(require 'generic-x)
+(require 'pts-mode)
+
 ; configure super and hyper keys
 (setq w32-pass-lwindow-to-system nil 
       w32-pass-rwindow-to-system nil 
@@ -43,8 +55,6 @@
  '(fixed-pitch ((t (:family "FreeMono"))))
  '(italic ((t (:underline nil :slant italic))))
  '(variable-pitch ((t (:family "FreeSerif")))))
-
-(add-to-list 'load-path user-emacs-directory)
 
 ; Prepare for loading Agda mode and load Agda input method
 (load-file (let ((coding-system-for-read 'utf-8))
