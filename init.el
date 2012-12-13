@@ -46,6 +46,7 @@
  '(cua-mode t nil (cua-base))
  '(default-input-method "Agda")
  '(fill-column 65)
+ '(indent-tabs-mode nil)
  '(tex-fontify-script nil))
 
 (custom-set-faces
