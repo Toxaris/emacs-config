@@ -10,7 +10,9 @@
 (require 'generic-x)
 (require 'pts-mode)
 
-; configure super and hyper keys
+; MODIFIER KEYS
+; =============
+
 (setq w32-pass-lwindow-to-system nil 
       w32-pass-rwindow-to-system nil 
       w32-pass-apps-to-system nil 
@@ -31,6 +33,9 @@
 
 (add-hook 'text-mode-hook 'enable-input-method)
 (add-hook 'tex-mode-hook 'disable-input-method)
+
+; CUSTOM
+; ======
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -59,6 +64,9 @@
  '(italic ((t (:underline nil :slant italic))))
  '(variable-pitch ((t (:family "FreeSerif")))))
 
+; AGDA MODE
+; =========
+
 ; Prepare for loading Agda mode and load Agda input method
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
@@ -71,7 +79,9 @@
 (add-to-list 'auto-mode-alist
   '("\\.lagda\\'" . two-mode-mode))
 
-; Scala mode
+; SCALA MODE
+; ==========
+
 (add-to-list 'load-path
   (concat
     (getenv "SCALA_HOME")
