@@ -99,3 +99,8 @@
     (getenv "SCALA_HOME")
     "\\misc\\scala-tool-support\\emacs"))
 (require 'scala-mode-auto)
+
+; ICICLE
+; ======
+
+(icy-mode)
