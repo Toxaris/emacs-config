@@ -81,16 +81,15 @@
 ; =========
 
 ; Prepare for loading Agda mode and load Agda input method
-(load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda-mode locate")))
-
-(require 'agda-input)
-
-; configure two-mode for literate agda
-(require 'two-mode-mode)
-
-(add-to-list 'auto-mode-alist
-  '("\\.lagda\\'" . two-mode-mode))
+(let ((agda-mode-path
+       (let ((coding-system-for-read 'utf-8))
+         (shell-command-to-string "agda-mode locate"))))
+  (when (file-exists-p agda-mode-path)
+    (load agda-mode-path)
+    (require 'agda-input)
+    (require 'two-mode-mode)
+    (add-to-list 'auto-mode-alist
+      '("\\.lagda\\'" . two-mode-mode))))
 
 ; SCALA MODE
 ; ==========
