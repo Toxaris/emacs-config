@@ -3,6 +3,19 @@
 
 (add-to-list 'load-path user-emacs-directory)
 
+; MELPA
+; =====
+
+; packages to install:
+;  - melpa
+;  - icicle
+
+(when (> emacs-major-version 23)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/")
+               'APPEND))
 
 ; GENERIC MODE
 ; ============
