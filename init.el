@@ -9,6 +9,7 @@
 ; packages to install:
 ;  - melpa
 ;  - icicle
+;  - auctex
 
 (when (> emacs-major-version 23)
   (require 'package)
@@ -55,6 +56,10 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(TeX-PDF-mode t)
+ '(TeX-source-correlate-method (quote synctex))
+ '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t)
  '(agda2-ghci-options (quote ("-package Agda-2.3.0")))
  '(agda2-include-dirs (quote ("." "c:\\Users\\rendel\\Documents\\agda-lib\\src")))
  '(compilation-auto-jump-to-first-error t)
