@@ -46,7 +46,7 @@
     (toggle-input-method)))
 
 (add-hook 'text-mode-hook 'enable-input-method)
-(add-hook 'tex-mode-hook 'disable-input-method)
+(add-hook 'TeX-mode-hook 'disable-input-method)
 
 ; CUSTOM
 ; ======
