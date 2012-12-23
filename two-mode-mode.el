@@ -34,7 +34,7 @@
 ;; accurate anymore.
 
 ;; configure these:
-(defvar default-mode (list "LaTeX" 'latex-mode))
+(defvar default-mode (list "LaTeX/PS" 'LaTeX-mode))
 (defvar second-modes (list
 		      (list "Agda" "\\begin{code" "\\end{code" 'agda2-mode)
 		      ))
