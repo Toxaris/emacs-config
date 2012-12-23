@@ -56,7 +56,8 @@
 (setq two-mode-switch-hook nil)
 
 (defun two-mode-mode-setup ()
-  (make-local-hook 'post-command-hook)
+  (when (<= emacs-major-version 23)
+    (make-local-hook 'post-command-hook))
   (add-hook 'post-command-hook 'two-mode-mode-need-update nil t)
   (make-local-variable 'minor-mode-alist)
   (make-local-variable 'two-mode-bool)
