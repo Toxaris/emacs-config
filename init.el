@@ -85,7 +85,10 @@
  '(cua-mode t nil (cua-base))
  '(default-input-method "Agda")
  '(fill-column 65)
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-haskell-doc-mode)))
+ '(haskell-program-name "ghci")
  '(indent-tabs-mode nil)
+ '(inferior-haskell-wait-and-jump t)
  '(tex-fontify-script nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 
