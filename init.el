@@ -59,6 +59,11 @@
 (add-hook 'text-mode-hook 'enable-input-method)
 (add-hook 'TeX-mode-hook 'disable-input-method)
 
+; BUFFER NAMES
+; ============
+
+(require 'uniquify)
+
 ; CUSTOM
 ; ======
 
@@ -81,7 +86,8 @@
  '(default-input-method "Agda")
  '(fill-column 65)
  '(indent-tabs-mode nil)
- '(tex-fontify-script nil))
+ '(tex-fontify-script nil)
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
