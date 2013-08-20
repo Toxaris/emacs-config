@@ -16,12 +16,18 @@
 ;  - icicle
 ;  - auctex
 
+(defun install-package-unless-installed (package)
+  (when (not (package-installed-p package))
+    (package-install package)))
+
 (when (> emacs-major-version 23)
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/")
-               'APPEND))
+               'APPEND)
+  (install-package-unless-installed 'haskell-mode))
+
 
 ; GENERIC MODE
 ; ============
