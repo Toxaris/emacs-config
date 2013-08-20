@@ -129,3 +129,9 @@
 ; ======
 
 (icy-mode)
+
+
+; CODING SYSTEM
+; =============
+
+(prefer-coding-system 'utf-8)
