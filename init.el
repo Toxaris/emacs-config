@@ -1,3 +1,8 @@
+; Start Server
+; ============
+
+(server-start)
+
 ; SEARCH PATH
 ; ===========
 
