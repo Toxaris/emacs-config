@@ -11,11 +11,6 @@
 ; MELPA
 ; =====
 
-; packages to install:
-;  - melpa
-;  - icicle
-;  - auctex
-
 (defun install-package-unless-installed (package)
   (when (not (package-installed-p package))
     (package-install package)))
@@ -26,6 +21,8 @@
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/")
                'APPEND)
+  (install-package-unless-installed 'icicles)
+  (install-package-unless-installed 'auctex)
   (install-package-unless-installed 'haskell-mode))
 
 
