@@ -119,11 +119,14 @@
 ; SCALA MODE
 ; ==========
 
-(add-to-list 'load-path
-  (concat
-    (getenv "SCALA_HOME")
-    "\\misc\\scala-tool-support\\emacs"))
-(require 'scala-mode-auto)
+
+(let ((scala-home (getenv "SCALA_HOME")))
+  (when (and scala-home (file-exists-p scala-home))
+    (add-to-list 'load-path
+      (concat
+       scala-home
+       "\\misc\\scala-tool-support\\emacs"))
+    (require 'scala-mode-auto)))
 
 ; ICICLE
 ; ======
