@@ -38,12 +38,28 @@
 ; GREP
 ; ====
 
+; Use Cygwin's find instead of Microsoft's find.
 (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
   "Use cygwin's find."
   (let ((null-device "/dev/null")
         (find-program "c:/cygwin64/bin/find.exe"))
      ad-do-it))
 (ad-activate 'grep-compute-defaults)
+
+(eval-after-load "grep"
+  '(progn
+     ;; Allow searching for agda files.
+     (add-to-list 'grep-files-aliases
+		  '("agda" . "*.agda *.lagda")
+		  t)
+
+     ;; Ignore cabal-dev sandbox directories.
+     (add-to-list 'grep-find-ignored-directories
+                  "cabal-dev")
+
+     ;; Ignore agda interface files.
+     (add-to-list 'grep-find-ignored-files
+                  "*.agdai")))
 
 ; GENERIC MODE
 ; ============
