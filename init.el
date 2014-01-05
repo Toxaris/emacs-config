@@ -33,6 +33,8 @@
   (install-package-unless-installed 'icicles)
   (install-package-unless-installed 'auctex)
   (install-package-unless-installed 'scala-mode2)
+  (install-package-unless-installed 'git-rebase-mode)
+  (install-package-unless-installed 'git-commit-mode)
   (install-package-unless-installed 'haskell-mode))
 
 ; GREP
