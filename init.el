@@ -1,3 +1,12 @@
+; Maximize Window
+; ===============
+
+(add-hook 'window-setup-hook
+          (lambda () (w32-send-sys-command #xf030)))
+
+(add-hook 'term-setup-hook
+          (lambda () (w32-send-sys-command #xf030)))
+
 ; Start Server
 ; ============
 
