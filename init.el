@@ -26,6 +26,15 @@
   (install-package-unless-installed 'scala-mode2)
   (install-package-unless-installed 'haskell-mode))
 
+; GREP
+; ====
+
+(defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
+  "Use cygwin's find."
+  (let ((null-device "/dev/null")
+        (find-program "c:/cygwin64/bin/find.exe"))
+     ad-do-it))
+(ad-activate 'grep-compute-defaults)
 
 ; GENERIC MODE
 ; ============
