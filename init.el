@@ -71,6 +71,14 @@
 
 (require 'uniquify)
 
+; TEX
+; ===
+
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list
+                '("Make" "make --batch" TeX-run-TeX nil t :help "Call make.bat")
+                '("Texify" "texify --batch --pdf --run-viewer %t" TeX-run-TeX nil t :help "Texify file and view result")))
+
 ; CUSTOM
 ; ======
 
@@ -80,6 +88,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-PDF-mode t)
+ '(TeX-save-query nil)
  '(TeX-source-correlate-method (quote synctex))
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
