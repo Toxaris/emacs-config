@@ -23,6 +23,7 @@
                'APPEND)
   (install-package-unless-installed 'icicles)
   (install-package-unless-installed 'auctex)
+  (install-package-unless-installed 'scala-mode2)
   (install-package-unless-installed 'haskell-mode))
 
 
@@ -116,14 +117,16 @@
 ; SCALA MODE
 ; ==========
 
-
+; Activate the emacs mode that comes with scala if
+; a scala version with a bundled emacs mode is installed.
 (let ((scala-home (getenv "SCALA_HOME")))
   (when (and scala-home (file-exists-p scala-home))
-    (add-to-list 'load-path
-      (concat
-       scala-home
-       "\\misc\\scala-tool-support\\emacs"))
-    (require 'scala-mode-auto)))
+    (let ((scala-mode-path (concat
+                            scala-home
+                            "\\misc\\scala-tool-support\\emacs")))
+      (when (file-exists-p scala-mode-path)
+        (add-to-list 'load-path scala-mode-path)
+        (require 'scala-mode-auto)))))
 
 ; ICICLE
 ; ======
