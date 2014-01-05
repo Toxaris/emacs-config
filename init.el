@@ -152,6 +152,22 @@
  '(italic ((t (:underline nil :slant italic))))
  '(variable-pitch ((t (:family "FreeSerif")))))
 
+; ETAGS
+; =====
+
+; from http://www.emacswiki.org/emacs/EmacsTags
+(defun view-tag-other-window (arg)
+  "Same as `find-tag-other-window' but doesn't move the point"
+  (interactive "P")
+  (let ((window (get-buffer-window)))
+    (if arg
+        (find-tag-other-window nil t)
+      (call-interactively 'find-tag-other-window))
+    (recenter 0)
+    (select-window window)))
+
+(global-set-key (kbd "M-.") 'view-tag-other-window)
+
 ; AGDA MODE
 ; =========
 
