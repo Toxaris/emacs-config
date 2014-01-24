@@ -1,0 +1,3 @@
+[submodule "sbt-mode"]
+	path = sbt-mode
+	url = https://github.com/Toxaris/sbt-mode.git

@@ -141,6 +141,7 @@
  '(prolog-hungry-delete-key-flag t)
  '(prolog-program-name (quote (((getenv "EPROLOG") (eval (getenv "EPROLOG"))) (eclipse "eclipse") (mercury nil) (sicstus "sicstus") (swi "swipl") (gnu "gprolog") (t "prolog"))))
  '(prolog-system (quote swi))
+ '(sbt:program-name "sbt-inferior")
  '(tex-fontify-script nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 
@@ -197,6 +198,15 @@
       (when (file-exists-p scala-mode-path)
         (add-to-list 'load-path scala-mode-path)
         (require 'scala-mode-auto)))))
+
+; SBT MODE
+; ========
+
+; Activate the sbt mode in a submode of the git repo.
+(let ((sbt-mode-path (concat user-emacs-directory "sbt-mode")))
+  (when (file-exists-p sbt-mode-path)
+    (add-to-list 'load-path sbt-mode-path)
+    (require 'sbt-mode)))
 
 ; ICICLE
 ; ======
