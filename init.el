@@ -26,10 +26,10 @@
 
 (when (> emacs-major-version 23)
   (require 'package)
-  (package-initialize)
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/")
                'APPEND)
+  (package-initialize)
   (install-package-unless-installed 'icicles)
   (install-package-unless-installed 'auctex)
   (install-package-unless-installed 'scala-mode2)
