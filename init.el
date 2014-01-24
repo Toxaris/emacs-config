@@ -208,3 +208,10 @@
 ; =============
 
 (prefer-coding-system 'utf-8)
+
+; OPEN INIT FILE
+; ==============
+
+(defun find-dot-emacs () (interactive)
+  "Try to find and open the dot emacs file"
+  (find-file "~/.emacs.d/init.el"))
