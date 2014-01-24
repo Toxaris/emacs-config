@@ -215,3 +215,8 @@
 (defun find-dot-emacs () (interactive)
   "Try to find and open the dot emacs file"
   (find-file "~/.emacs.d/init.el"))
+
+; DISABLE SOME KEYBINDINGS
+; ========================
+
+(global-unset-key "\C-x\C-c")
