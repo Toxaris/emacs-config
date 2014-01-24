@@ -21,7 +21,7 @@
 ; =====
 
 (defun install-package-unless-installed (package)
-  (when (not (package-installed-p package))
+  (unless (package-installed-p package)
     (package-install package)))
 
 (when (> emacs-major-version 23)
