@@ -192,20 +192,6 @@
     (add-to-list 'auto-mode-alist
       '("\\.lagda\\'" . two-mode-mode))))
 
-; SCALA MODE
-; ==========
-
-; Activate the emacs mode that comes with scala if
-; a scala version with a bundled emacs mode is installed.
-(let ((scala-home (getenv "SCALA_HOME")))
-  (when (and scala-home (file-exists-p scala-home))
-    (let ((scala-mode-path (concat
-                            scala-home
-                            "\\misc\\scala-tool-support\\emacs")))
-      (when (file-exists-p scala-mode-path)
-        (add-to-list 'load-path scala-mode-path)
-        (require 'scala-mode-auto)))))
-
 ; SBT MODE
 ; ========
 
