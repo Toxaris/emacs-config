@@ -228,6 +228,13 @@
 ; ========================
 
 (global-unset-key "\C-x\C-c")
+
+; PAREN MATCHING
+; ==============
+
+(show-paren-mode 1)
+(setq show-paren-style 'mixed)
+
 ; HASKELL MODE
 ; ============
 
