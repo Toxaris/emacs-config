@@ -135,6 +135,8 @@
  '(cua-mode t nil (cua-base))
  '(default-input-method "Agda")
  '(fill-column 65)
+ '(haskell-compile-cabal-build-alt-command "cd %s & cabal clean -s && cabal build --ghc-option=-ferror-spans")
+ '(haskell-compile-cabal-build-command "cd %s && cabal build --ghc-option=-ferror-spans")
  '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-haskell-doc-mode)))
  '(haskell-program-name "ghci")
  '(indent-tabs-mode nil)
@@ -217,3 +219,11 @@
 ; ========================
 
 (global-unset-key "\C-x\C-c")
+; HASKELL MODE
+; ============
+
+(eval-after-load "haskell-mode"
+  '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+
+(eval-after-load "haskell-cabal"
+  '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
