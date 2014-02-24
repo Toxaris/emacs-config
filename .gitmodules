@@ -1,3 +1,6 @@
 [submodule "sbt-mode"]
 	path = sbt-mode
 	url = https://github.com/Toxaris/sbt-mode.git
+[submodule "transpose-frame"]
+	path = transpose-frame
+	url = https://github.com/emacsmirror/transpose-frame

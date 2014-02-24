@@ -243,3 +243,12 @@
 
 (eval-after-load "haskell-cabal"
   '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
+
+; TRANSPOSE FRAME
+; ===============
+
+; Activate transpose-frame in a submodule of the git repo.
+(let ((transpose-frame-path (concat user-emacs-directory "transpose-frame")))
+  (when (file-exists-p transpose-frame-path)
+    (add-to-list 'load-path transpose-frame-path)
+    (require 'transpose-frame)))
