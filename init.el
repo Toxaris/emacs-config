@@ -139,6 +139,7 @@
  '(haskell-program-name "ghci")
  '(indent-tabs-mode nil)
  '(inferior-haskell-wait-and-jump t)
+ '(inhibit-startup-screen t)
  '(prolog-electric-colon-flag t)
  '(prolog-electric-dot-flag t)
  '(prolog-electric-dot-full-predicate-template t)
