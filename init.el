@@ -151,6 +151,7 @@
  '(prolog-hungry-delete-key-flag t)
  '(prolog-program-name (quote (((getenv "EPROLOG") (eval (getenv "EPROLOG"))) (eclipse "eclipse") (mercury nil) (sicstus "sicstus") (swi "swipl") (gnu "gprolog") (t "prolog"))))
  '(prolog-system (quote swi))
+ '(sbt:ansi-support (quote filter))
  '(sbt:program-name "sbt-inferior")
  '(tex-fontify-script nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
@@ -203,6 +204,14 @@
   (when (file-exists-p sbt-mode-path)
     (add-to-list 'load-path sbt-mode-path)
     (require 'sbt-mode)))
+
+(add-hook 'sbt-mode-hook (lambda ()
+  (local-set-key (kbd "C-a") 'comint-bol)
+  (local-set-key (kbd "S-<return>") 'comint-accumulate)))
+
+(add-hook 'scala-mode-hook (lambda ()
+  (local-set-key (kbd "C-c C-l") 'sbt-run-previous-command))
+  (local-set-key (kbd "M-.") 'sbt-find-definitions))
 
 ; ICICLE
 ; ======
