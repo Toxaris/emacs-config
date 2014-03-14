@@ -252,3 +252,10 @@
   (when (file-exists-p transpose-frame-path)
     (add-to-list 'load-path transpose-frame-path)
     (require 'transpose-frame)))
+
+; DIFF MODE
+; =========
+
+; Highlight trailing whitespace
+(add-hook 'diff-mode-hook (lambda ()
+  (set-variable 'show-trailing-whitespace t)))
