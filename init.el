@@ -109,9 +109,11 @@
 ; ===
 
 (eval-after-load "tex"
-  '(add-to-list 'TeX-command-list
-                '("Make" "make.bat --batch" TeX-run-TeX nil t :help "Call make.bat")
-                '("Texify" "texify --batch --pdf --run-viewer %t" TeX-run-TeX nil t :help "Texify file and view result")))
+  '(progn
+    (add-to-list 'TeX-command-list
+		 '("Make" "make.bat --batch" TeX-run-TeX nil t :help "Call make.bat"))
+    (add-to-list 'TeX-command-list
+		 '("Texify" "texify --batch --pdf --run-viewer %t" TeX-run-TeX nil t :help "Texify file and view result"))))
 
 ; CUSTOM
 ; ======
