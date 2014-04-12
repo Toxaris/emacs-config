@@ -4,3 +4,6 @@
 [submodule "transpose-frame"]
 	path = transpose-frame
 	url = https://github.com/emacsmirror/transpose-frame
+[submodule "scala-mode2"]
+	path = scala-mode2
+	url = https://github.com/Toxaris/scala-mode2

@@ -39,7 +39,6 @@
   (package-initialize)
   (install-package-unless-installed 'icicles)
   (install-package-unless-installed 'auctex)
-  (install-package-unless-installed 'scala-mode2)
   (install-package-unless-installed 'git-rebase-mode)
   (install-package-unless-installed 'git-commit-mode)
   (install-package-unless-installed 'haskell-mode))
@@ -220,6 +219,12 @@
 
 ; SCALA MODE
 ; ==========
+
+; Activate scala-mode2 in a submodule of the git repo.
+(let ((scala-mode2-path (concat user-emacs-directory "scala-mode2")))
+  (when (file-exists-p scala-mode2-path)
+    (add-to-list 'load-path scala-mode2-path)
+    (require 'scala-mode2)))
 
 (add-hook 'scala-mode-hook (lambda()
   (local-set-key (kbd "RET") (lambda ()
