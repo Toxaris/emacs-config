@@ -215,8 +215,8 @@
   (local-set-key (kbd "S-<return>") 'comint-accumulate)))
 
 (add-hook 'scala-mode-hook (lambda ()
-  (local-set-key (kbd "C-c C-l") 'sbt-run-previous-command))
-  (local-set-key (kbd "M-.") 'sbt-find-definitions))
+  (local-set-key (kbd "C-c C-l") 'sbt-run-previous-command)
+  (local-set-key (kbd "M-.") 'sbt-find-definitions)))
 
 ; ICICLE
 ; ======
