@@ -218,6 +218,15 @@
   (local-set-key (kbd "C-c C-l") 'sbt-run-previous-command)
   (local-set-key (kbd "M-.") 'sbt-find-definitions)))
 
+; SCALA MODE
+; ==========
+
+(add-hook 'scala-mode-hook (lambda()
+  (local-set-key (kbd "RET") (lambda ()
+    (interactive)
+    (newline-and-indent)
+    (scala-indent:insert-asterisk-on-multiline-comment)))))
+
 ; ICICLE
 ; ======
 
