@@ -203,7 +203,7 @@
 ; SBT MODE
 ; ========
 
-; Activate the sbt mode in a submode of the git repo.
+; Activate sbt-mode in a submodule of the git repo.
 (let ((sbt-mode-path (concat user-emacs-directory "sbt-mode")))
   (when (file-exists-p sbt-mode-path)
     (add-to-list 'load-path sbt-mode-path)
