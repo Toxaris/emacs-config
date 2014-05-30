@@ -264,6 +264,12 @@
   '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
 
 (add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template)
+(add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
+
+(require 'speedbar)
+(speedbar-add-supported-extension ".hs")
+(speedbar-add-supported-extension ".lhs")
+(speedbar-add-supported-extension ".hsc")
 
 ; TRANSPOSE FRAME
 ; ===============
@@ -280,3 +286,9 @@
 ; Highlight trailing whitespace
 (add-hook 'diff-mode-hook (lambda ()
   (set-variable 'show-trailing-whitespace t)))
+
+; SPEED BAR
+; =========
+
+; Bind s-s to show the speedbar as a window in the same frame
+(global-set-key (kbd "C-c C-s") 'sr-speedbar-toggle)
