@@ -263,6 +263,8 @@
 (eval-after-load "haskell-cabal"
   '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
 
+(add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template)
+
 ; TRANSPOSE FRAME
 ; ===============
 
