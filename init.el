@@ -128,7 +128,7 @@
  '(TeX-source-correlate-mode t)
  '(TeX-source-correlate-start-server t)
  '(agda2-ghci-options (quote ("-package Agda-2.3.0")))
- '(agda2-include-dirs (quote ("." "c:\\Users\\rendel\\Documents\\agda-lib\\src")))
+ '(agda2-include-dirs (quote ("." "c:\\Users\\Tillmann\\Documents\\GitHub\\agda-stdlib\\src")))
  '(bibtex-align-at-equal-sign t)
  '(bibtex-entry-format (quote (opts-or-alts required-fields numerical-fields whitespace realign last-comma delimiters strings sort-fields)))
  '(bibtex-text-indentation 18)
