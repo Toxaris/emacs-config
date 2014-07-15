@@ -73,7 +73,6 @@
 ; ============
 
 (require 'generic-x)
-(require 'pts-mode)
 
 ; MODIFIER KEYS
 ; =============
@@ -199,6 +198,14 @@
     (require 'two-mode-mode)
     (add-to-list 'auto-mode-alist
       '("\\.lagda\\'" . two-mode-mode))))
+
+; PTS MODE
+; ========
+
+(let ((pts-mode-path (shell-command-to-string "pts --locate-emacs-mode")))
+  (when (file-exists-p pts-mode-path)
+    (add-to-list 'load-path pts-mode-path)
+    (require 'pts-mode)))
 
 ; SBT MODE
 ; ========
