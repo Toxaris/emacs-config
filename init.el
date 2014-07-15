@@ -140,7 +140,6 @@
  '(fill-column 65)
  '(haskell-compile-cabal-build-alt-command "cd %s & cabal clean -s && cabal build --ghc-option=-ferror-spans")
  '(haskell-compile-cabal-build-command "cd %s && cabal build --ghc-option=-ferror-spans")
- '(haskell-mode-hook (quote (turn-on-haskell-indentation turn-on-haskell-doc-mode)))
  '(haskell-program-name "ghci")
  '(indent-tabs-mode nil)
  '(inferior-haskell-wait-and-jump t)
@@ -270,8 +269,9 @@
 (eval-after-load "haskell-cabal"
   '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
 
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template)
-(add-hook 'haskell-mode-hook 'haskell-decl-scan-mode)
 
 (require 'speedbar)
 (speedbar-add-supported-extension ".hs")
