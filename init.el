@@ -153,6 +153,7 @@
  '(prolog-hungry-delete-key-flag t)
  '(prolog-program-name (quote (((getenv "EPROLOG") (eval (getenv "EPROLOG"))) (eclipse "eclipse") (mercury nil) (sicstus "sicstus") (swi "swipl") (gnu "gprolog") (t "prolog"))))
  '(prolog-system (quote swi))
+ '(reftex-default-bibliography (quote ("bib/tsr.bib" "../bib/tsr.bib" "../../bib/tsr.bib")))
  '(sbt:ansi-support (quote filter))
  '(sbt:program-name "sbt-inferior")
  '(tex-fontify-script nil)
