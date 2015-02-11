@@ -238,6 +238,15 @@
   (local-set-key (kbd "C-c C-l") 'sbt-run-previous-command)
   (local-set-key (kbd "M-.") 'sbt-find-definitions)))
 
+; UROBORO MODE
+; ============
+
+; Activate uroboro-mode in a submodule of the git rep.
+(let ((uroboro-mode-path (concat user-emacs-directory "uroboro-mode")))
+  (when (file-exists-p uroboro-mode-path)
+    (add-to-list 'load-path uroboro-mode-path)
+    (require 'uroboro-mode)))
+
 ; SCALA MODE
 ; ==========
 

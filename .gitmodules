@@ -7,3 +7,6 @@
 [submodule "scala-mode2"]
 	path = scala-mode2
 	url = https://github.com/Toxaris/scala-mode2
+[submodule "uroboro-mode"]
+	path = uroboro-mode
+	url = https://github.com/Toxaris/uroboro-mode
