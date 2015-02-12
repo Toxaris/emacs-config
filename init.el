@@ -46,11 +46,25 @@
 ; GREP
 ; ====
 
+(defun check-candidate-find (program)
+  "Check whether a program appears to be GNU find."
+  (and (string-match "GNU find"
+         (shell-command-to-string
+           (combine-and-quote-strings
+            (list program "--version"))))
+       program))
+
+(defvar gnu-find-program
+  (or (check-candidate-find "find")
+      (check-candidate-find "c:/cygwin64/bin/find.exe"))
+  "The path to a version of GNU find.")
+
+
 ; Use Cygwin's find instead of Microsoft's find.
 (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
   "Use cygwin's find."
   (let ((null-device "/dev/null")
-        (find-program "c:/cygwin64/bin/find.exe"))
+        (find-program gnu-find-program))
      ad-do-it))
 (ad-activate 'grep-compute-defaults)
 
