@@ -155,6 +155,7 @@
  '(haskell-compile-cabal-build-alt-command "cd %s & cabal clean -s && cabal build --ghc-option=-ferror-spans")
  '(haskell-compile-cabal-build-command "cd %s && cabal build --ghc-option=-ferror-spans")
  '(haskell-program-name "ghci")
+ '(icicle-Completions-text-scale-decrease 1.0)
  '(indent-tabs-mode nil)
  '(inferior-haskell-wait-and-jump t)
  '(inhibit-startup-screen t)
