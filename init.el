@@ -169,7 +169,6 @@
  '(prolog-system (quote swi))
  '(reftex-default-bibliography (quote ("bib/tsr.bib" "../bib/tsr.bib" "../../bib/tsr.bib")))
  '(sbt:ansi-support (quote filter))
- '(sbt:program-name "sbt-inferior")
  '(tex-fontify-script nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 
@@ -228,7 +227,8 @@
 (let ((sbt-mode-path (concat user-emacs-directory "sbt-mode")))
   (when (file-exists-p sbt-mode-path)
     (add-to-list 'load-path sbt-mode-path)
-    (require 'sbt-mode)))
+    (require 'sbt-mode)
+    (set-variable 'sbt:program-name (concat user-emacs-directory "sbt-inferior.bat"))))
 
 (add-hook 'sbt-mode-hook (lambda ()
   (local-set-key (kbd "C-a") 'comint-bol)
