@@ -156,7 +156,7 @@
  '(haskell-compile-cabal-build-alt-command "cd %s & cabal clean -s && cabal build --ghc-option=-ferror-spans")
  '(haskell-compile-cabal-build-command "cd %s && stack build --ghc-options \"-ferror-spans\"")
  '(haskell-program-name "stack exec ghci")
- '(icicle-Completions-text-scale-decrease 1.0)
+ '(icicle-Completions-text-scale-decrease 0.0)
  '(indent-tabs-mode nil)
  '(inferior-haskell-wait-and-jump t)
  '(inhibit-startup-screen t)
@@ -325,3 +325,8 @@
 
 ; Bind s-s to show the speedbar as a window in the same frame
 (global-set-key (kbd "C-c C-s") 'sr-speedbar-toggle)
+
+; NO-LONGER DISABLED COMMANDS
+; ===========================
+
+(put 'downcase-region 'disabled nil)
