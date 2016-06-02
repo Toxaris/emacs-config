@@ -34,8 +34,8 @@
 
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/")
-	     'APPEND)
+  '("melpa" . "http://melpa.milkbox.net/packages/")
+  'APPEND)
 (package-initialize)
 (install-package-unless-installed 'icicles)
 (install-package-unless-installed 'auctex)
