@@ -47,9 +47,6 @@
 (use-package icicles
   :ensure t)
 
-(use-package tex-site
-  :ensure auctex)
-
 (use-package magit
   :ensure t)
 
@@ -126,7 +123,6 @@
     (toggle-input-method)))
 
 (add-hook 'text-mode-hook 'enable-input-method)
-(add-hook 'TeX-mode-hook 'disable-input-method)
 
 ; BUFFER NAMES
 ; ============
@@ -136,12 +132,36 @@
 ; TEX
 ; ===
 
-(eval-after-load "tex"
-  '(progn
-    (add-to-list 'TeX-command-list
-		 '("Make" "make.bat --batch" TeX-run-TeX nil t :help "Call make.bat"))
-    (add-to-list 'TeX-command-list
-		 '("Texify" "texify --batch --pdf --run-viewer %t" TeX-run-TeX nil t :help "Texify file and view result"))))
+(use-package tex-site
+  :ensure auctex)
+
+(use-package tex
+  :defer
+  :config
+  (add-all-to-list 'TeX-command-list
+    '("Make" "make.bat --batch" TeX-run-TeX nil t :help "Call make.bat")
+    '("Texify" "texify --batch --pdf --run-viewer %t" TeX-run-TeX nil t :help "Texify file and view result"))
+  (TeX-PDF-mode t)
+  (set-variable 'tex-fontify-script nil)
+  (set-variable 'TeX-save-query nil)
+  (add-hook 'TeX-mode-hook 'disable-input-method))
+
+(use-package bibtex
+  :defer
+  :config
+  (set-variable 'bibtex-align-at-equal-sign t)
+  (set-variable 'bibtex-entry-format
+    '(opts-or-alts required-fields numerical-fields whitespace realign last-comma delimiters strings sort-fields))
+  (set-variable 'bibtex-text-indentation 18)
+  (add-hook 'bibtex-mode-hook 'disable-input-method))
+
+(use-package reftex
+  :defer
+  :config
+  (add-all-to-list 'reftex-default-bibliography
+    "bib/tsr.bib"
+    "../bib/tsr.bib"
+    "../../bib/tsr.bib"))
 
 ; CUSTOM
 ; ======
@@ -151,16 +171,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(TeX-PDF-mode t)
- '(TeX-save-query nil)
- '(TeX-source-correlate-method (quote synctex))
- '(TeX-source-correlate-mode t)
- '(TeX-source-correlate-start-server t)
  '(agda2-ghci-options (quote ("-package Agda-2.3.0")))
  '(agda2-include-dirs (quote ("." "c:\\Users\\Tillmann\\Documents\\GitHub\\agda-stdlib\\src")))
- '(bibtex-align-at-equal-sign t)
- '(bibtex-entry-format (quote (opts-or-alts required-fields numerical-fields whitespace realign last-comma delimiters strings sort-fields)))
- '(bibtex-text-indentation 18)
  '(compilation-auto-jump-to-first-error t)
  '(compilation-scroll-output (quote first-error))
  '(cua-auto-tabify-rectangles nil)
@@ -185,9 +197,7 @@
  '(prolog-hungry-delete-key-flag t)
  '(prolog-program-name (quote (((getenv "EPROLOG") (eval (getenv "EPROLOG"))) (eclipse "eclipse") (mercury nil) (sicstus "sicstus") (swi "swipl") (gnu "gprolog") (t "prolog"))))
  '(prolog-system (quote swi))
- '(reftex-default-bibliography (quote ("bib/tsr.bib" "../bib/tsr.bib" "../../bib/tsr.bib")))
  '(sbt:ansi-support (quote filter))
- '(tex-fontify-script nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 
 (custom-set-faces
