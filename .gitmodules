@@ -10,3 +10,6 @@
 [submodule "uroboro-mode"]
 	path = uroboro-mode
 	url = https://github.com/Toxaris/uroboro-mode
+[submodule "use-package"]
+	path = use-package
+	url = https://github.com/jwiegley/use-package

@@ -22,26 +22,42 @@
 ; SEARCH PATH
 ; ===========
 
-(add-to-list 'load-path
-  (concat user-emacs-directory "lisp"))
+(defmacro add-all-to-list (lst &rest elms)
+  `(progn ,@(mapcar (lambda (elm) `(add-to-list ,lst ,elm)) elms)))
+
+(add-all-to-list 'load-path
+  (concat user-emacs-directory "lisp")
+  (concat user-emacs-directory "use-package"))
+
+; USE-PACKAGE
+; ===========
+
+(require 'use-package)
 
 ; MELPA
 ; =====
-
-(defun install-package-unless-installed (package)
-  (unless (package-installed-p package)
-    (package-install package)))
 
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/")
   'APPEND)
+
 (package-initialize)
-(install-package-unless-installed 'icicles)
-(install-package-unless-installed 'auctex)
-(install-package-unless-installed 'git-rebase-mode)
-(install-package-unless-installed 'git-commit-mode)
-(install-package-unless-installed 'haskell-mode))
+
+(use-package icicles
+  :ensure t)
+
+(use-package tex-site
+  :ensure auctex)
+
+(use-package magit
+  :ensure t)
+
+(use-package haskell-mode
+  :ensure t)
+
+(use-package dtrt-indent
+  :ensure t)
 
 ; GREP
 ; ====
