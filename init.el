@@ -5,14 +5,13 @@
   "Try to find and open the dot emacs file"
   (find-file "~/.emacs.d/init.el"))
 
-; Maximize Window
-; ===============
+; STARTUP
+; =======
 
 (add-hook 'window-setup-hook
           (lambda () (w32-send-sys-command #xf030)))
 
-(add-hook 'term-setup-hook
-          (lambda () (w32-send-sys-command #xf030)))
+(set-variable 'inhibit-startup-screen t)
 
 ; Start Server
 ; ============
@@ -190,7 +189,6 @@
  '(icicle-Completions-text-scale-decrease 0.0)
  '(indent-tabs-mode nil)
  '(inferior-haskell-wait-and-jump t)
- '(inhibit-startup-screen t)
  '(prolog-electric-colon-flag t)
  '(prolog-electric-dot-flag t)
  '(prolog-electric-dot-full-predicate-template t)
