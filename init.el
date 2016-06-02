@@ -54,7 +54,9 @@
   :ensure t)
 
 (use-package dtrt-indent
-  :ensure t)
+  :ensure t
+  :config
+  (dtrt-indent-mode t))
 
 ; GREP
 ; ====
@@ -179,7 +181,6 @@
  '(cua-enable-cua-keys t)
  '(cua-mode t nil (cua-base))
  '(default-input-method "Agda")
- '(dtrt-indent-mode t nil (dtrt-indent))
  '(fill-column 65)
  '(haskell-compile-cabal-build-alt-command "cd %s & cabal clean -s && cabal build --ghc-option=-ferror-spans")
  '(haskell-compile-cabal-build-command "cd %s && stack build --ghc-options \"-ferror-spans\"")
