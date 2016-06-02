@@ -32,17 +32,16 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-(when (> emacs-major-version 23)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/")
-               'APPEND)
-  (package-initialize)
-  (install-package-unless-installed 'icicles)
-  (install-package-unless-installed 'auctex)
-  (install-package-unless-installed 'git-rebase-mode)
-  (install-package-unless-installed 'git-commit-mode)
-  (install-package-unless-installed 'haskell-mode))
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/")
+	     'APPEND)
+(package-initialize)
+(install-package-unless-installed 'icicles)
+(install-package-unless-installed 'auctex)
+(install-package-unless-installed 'git-rebase-mode)
+(install-package-unless-installed 'git-commit-mode)
+(install-package-unless-installed 'haskell-mode))
 
 ; GREP
 ; ====
