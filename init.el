@@ -342,6 +342,14 @@
 ; Bind s-s to show the speedbar as a window in the same frame
 (global-set-key (kbd "C-c C-s") 'sr-speedbar-toggle)
 
+; LISP INDENTATION
+; ================
+
+(put 'add-to-list 'lisp-indent-function 1)
+(put 'add-all-to-list 'lisp-indent-function 1)
+(put 'add-hook 'lisp-indent-function 1)
+(put 'set-variable 'lisp-indent-function 1)
+
 ; NO-LONGER DISABLED COMMANDS
 ; ===========================
 
