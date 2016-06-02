@@ -129,7 +129,9 @@
 ; BUFFER NAMES
 ; ============
 
-(require 'uniquify)
+(use-package uniquify
+  :config
+  (set-variable 'uniquify-buffer-name-style 'forward))
 
 ; TEX
 ; ===
@@ -198,8 +200,7 @@
  '(prolog-hungry-delete-key-flag t)
  '(prolog-program-name (quote (((getenv "EPROLOG") (eval (getenv "EPROLOG"))) (eclipse "eclipse") (mercury nil) (sicstus "sicstus") (swi "swipl") (gnu "gprolog") (t "prolog"))))
  '(prolog-system (quote swi))
- '(sbt:ansi-support (quote filter))
- '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
+ '(sbt:ansi-support (quote filter)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
