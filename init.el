@@ -49,9 +49,6 @@
 (use-package magit
   :ensure t)
 
-(use-package haskell-mode
-  :ensure t)
-
 (use-package dtrt-indent
   :ensure t
   :config
@@ -190,12 +187,8 @@
  '(compilation-scroll-output (quote first-error))
  '(default-input-method "Agda")
  '(fill-column 65)
- '(haskell-compile-cabal-build-alt-command "cd %s & cabal clean -s && cabal build --ghc-option=-ferror-spans")
- '(haskell-compile-cabal-build-command "cd %s && stack build --ghc-options \"-ferror-spans\"")
- '(haskell-program-name "stack exec ghci")
  '(icicle-Completions-text-scale-decrease 0.0)
  '(indent-tabs-mode nil)
- '(inferior-haskell-wait-and-jump t)
  '(prolog-electric-colon-flag t)
  '(prolog-electric-dot-flag t)
  '(prolog-electric-dot-full-predicate-template t)
@@ -319,18 +312,32 @@
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 
-; HASKELL MODE
-; ============
+; HASKELL
+; =======
 
-(eval-after-load "haskell-mode"
-  '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+(use-package haskell-mode
+  :ensure t
+  :defer
+  :config
+  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile)
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+  (add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template))
 
-(eval-after-load "haskell-cabal"
-  '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
+(use-package haskell-cabal
+  :defer
+  :config
+  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile)
+  (define-key haskell-cabal-mode-map (kbd "M-.")
+    'haskell-cabal-find-or-create-source-file))
 
-(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-(add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template)
+(use-package haskell-compile
+  :defer
+  :config
+  (set-variable 'haskell-compile-cabal-build-command
+    "cd %s && stack build --ghc-options \"-ferror-spans\"")
+  (set-variable 'haskell-compile-cabal-build-alt-command
+    "cd %s & cabal clean -s && cabal build --ghc-option=-ferror-spans"))
 
 (require 'speedbar)
 (speedbar-add-supported-extension ".hs")
