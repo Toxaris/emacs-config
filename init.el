@@ -132,6 +132,16 @@
   :config
   (set-variable 'uniquify-buffer-name-style 'forward))
 
+; CUA
+; ===
+
+(use-package cua-base
+  :config
+  (set-variable 'cua-auto-tabify-rectangles nil)
+  (set-variable 'cua-enable-cua-keys t)
+  (cua-mode))
+
+
 ; TEX
 ; ===
 
@@ -178,9 +188,6 @@
  '(agda2-include-dirs (quote ("." "c:\\Users\\Tillmann\\Documents\\GitHub\\agda-stdlib\\src")))
  '(compilation-auto-jump-to-first-error t)
  '(compilation-scroll-output (quote first-error))
- '(cua-auto-tabify-rectangles nil)
- '(cua-enable-cua-keys t)
- '(cua-mode t nil (cua-base))
  '(default-input-method "Agda")
  '(fill-column 65)
  '(haskell-compile-cabal-build-alt-command "cd %s & cabal clean -s && cabal build --ghc-option=-ferror-spans")
