@@ -140,6 +140,30 @@
   (set-variable 'cua-enable-cua-keys t)
   (cua-mode))
 
+; SPELL CHECKING
+; ==============
+
+(defun hunspell-program-wrapper (strings)
+  (with-temp-buffer
+    (dolist (string strings)
+      (insert string)
+      (newline))
+    (call-process-region (point-min) (point-max)
+                         "hunspell" t t nil "-w" "-d" "en_US")
+    (wcheck-parser-lines)))
+
+(use-package wcheck-mode
+  :ensure t
+  :defer t
+  :config
+  (add-to-list 'wcheck-language-data-defaults
+    '(action-parser . wcheck-parser-ispell-suggestions))
+  (add-all-to-list 'wcheck-language-data
+    '("American English"
+      (program . hunspell-program-wrapper)
+      (action-program . "C:/ProgramData/chocolatey/bin/hunspell.exe")
+      (action-args "-a" "-d" "en_US")))
+  (wcheck-change-language "American English" t))
 
 ; TEX
 ; ===
