@@ -8,6 +8,8 @@
 ; STARTUP
 ; =======
 
+(tool-bar-mode -1)
+
 (add-hook 'window-setup-hook
           (lambda () (w32-send-sys-command #xf030)))
 
