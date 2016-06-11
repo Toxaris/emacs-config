@@ -346,6 +346,16 @@
 (speedbar-add-supported-extension ".lhs")
 (speedbar-add-supported-extension ".hsc")
 
+; JEKYLL
+; ======
+
+; TODO: how to activate only for jekyll projects
+; TODO: is this what I want?!
+(use-package jekyll-modes
+  :ensure t
+  :mode ("\\.md$" . jekyll-markdown-mode)
+  :mode ("\\.html" . jekyll-html-mode))
+
 ; TRANSPOSE FRAME
 ; ===============
 
