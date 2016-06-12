@@ -144,13 +144,20 @@
 ; ==============
 
 (defun hunspell-program-wrapper (strings)
-  (with-temp-buffer
-    (dolist (string strings)
-      (insert string)
-      (newline))
-    (call-process-region (point-min) (point-max)
-                         "hunspell" t t nil "-w" "-d" "en_US")
-    (wcheck-parser-lines)))
+  (let* ((lang "en_US")
+         (dicts (mapconcat #'expand-file-name
+                           (list lang
+                                 (concat emacs-user-directory lang ".user"))
+                           ",")))
+    (with-temp-buffer
+      (dolist (string strings)
+        (insert string)
+        (newline))
+      (call-process-region (point-min) (point-max)
+        "hunspell" t t nil
+        "-w"
+        "-d" dicts)
+      (wcheck-parser-lines))))
 
 (use-package wcheck-mode
   :ensure t
