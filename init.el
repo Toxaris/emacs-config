@@ -180,6 +180,11 @@
 (use-package tex-site
   :ensure auctex)
 
+(defun lhs2tex-setup ()
+  (TeX-auto-add-regexp
+   '("^%include \\(\\.*[^#}%\\\\\\.\n\r]+\\)\\(\\.[^#}%\\\\\\.\n\r]+\\)?"
+     1 TeX-auto-file)))
+
 (use-package tex
   :defer
   :config
@@ -189,7 +194,18 @@
   (TeX-PDF-mode t)
   (set-variable 'tex-fontify-script nil)
   (set-variable 'TeX-save-query nil)
-  (add-hook 'TeX-mode-hook 'disable-input-method))
+  (add-hook 'TeX-mode-hook 'disable-input-method)
+  (add-hook 'TeX-mode-hook 'lhs2tex-setup)
+  (font-lock-add-keywords 'latex-mode
+    `(("^\\(%include\\) \\(\\.*[^#}%\\\\\\.\n\r]+\\)\\(\\.[^#}%\\\\\\.\n\r]+\\)?"
+       (1 font-lock-keyword-face prepend)
+       (2 font-lock-constant-face prepend)
+       (3 font-lock-constant-face prepend))
+      (,(concat "^" (regexp-opt (list "%{" "%}" "%endif") t))
+       (1 font-lock-keyword-face prepend))
+      ("^\\(%if\\) \\([^\n\r]*\\)"
+       (1 font-lock-keyword-face prepend)
+       (2 font-lock-constant-face prepend)))))
 
 (use-package bibtex
   :defer
