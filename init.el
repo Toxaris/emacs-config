@@ -228,6 +228,7 @@
   (add-hook 'TeX-mode-hook 'disable-input-method)
   (add-hook 'TeX-mode-hook 'lhs2tex-setup)
   (add-hook 'TeX-mode-hook 'guess-and-set-TeX-master)
+  (set-variable 'TeX-parse-self t)
   (set-variable 'TeX-auto-save t))
 
 (use-package latex
