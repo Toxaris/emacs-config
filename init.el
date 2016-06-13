@@ -180,6 +180,37 @@
 (use-package tex-site
   :ensure auctex)
 
+(defun guess-and-set-TeX-master ()
+  (let ((guess (guess-TeX-master buffer-file-name)))
+    (when guess
+      (set-variable 'TeX-master guess))))
+
+(defmacro with-all-buffers (body)
+  (let ((buffer (gensym "buffer")))
+    `(dolist (,buffer (buffer-list))
+       (with-current-buffer ,buffer
+         ,body))))
+
+(defun guess-TeX-master (filename)
+  "Guess the master file for FILENAME from currently open .tex files."
+  (let* ((candidate nil)
+         (filename (file-name-nondirectory filename))
+         (basename (file-name-sans-extension filename))
+         (pattern (mapconcat #'identity
+                    (list (concat "\\\\input{" filename "}")
+                          (concat "\\\\include{" basename "}")
+                          (concat "^%include " filename))
+                    "\\|")))
+    (with-all-buffers
+      (when (and buffer-file-name (string-match "\\.tex$" buffer-file-name))
+        (save-excursion
+          (goto-char (point-min))
+          (when (re-search-forward pattern nil t)
+            (setq candidate (or (and (stringp TeX-master)
+                                     TeX-master)
+                                buffer-file-name))))))
+    candidate))
+
 (defun lhs2tex-setup ()
   (TeX-auto-add-regexp
    '("^%include \\(\\.*[^#}%\\\\\\.\n\r]+\\)\\(\\.[^#}%\\\\\\.\n\r]+\\)?"
@@ -196,6 +227,7 @@
   (set-variable 'TeX-save-query nil)
   (add-hook 'TeX-mode-hook 'disable-input-method)
   (add-hook 'TeX-mode-hook 'lhs2tex-setup)
+  (add-hook 'TeX-mode-hook 'guess-and-set-TeX-master)
   (set-variable 'TeX-auto-save t))
 
 (use-package latex
@@ -452,6 +484,7 @@
 (put 'add-all-to-list 'lisp-indent-function 1)
 (put 'add-hook 'lisp-indent-function 1)
 (put 'set-variable 'lisp-indent-function 1)
+(put 'with-all-buffers 'lisp-indent-function 0)
 
 ; NO-LONGER DISABLED COMMANDS
 ; ===========================
