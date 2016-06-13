@@ -1,3 +1,5 @@
+; -*- lexical-binding: t -*-
+
 ; OPEN INIT FILE
 ; ==============
 
@@ -143,12 +145,11 @@
 ; SPELL CHECKING
 ; ==============
 
-(defun hunspell-program-wrapper (strings)
-  (let* ((lang "en_US")
-         (dicts (mapconcat #'expand-file-name
-                           (list lang
-                                 (concat emacs-user-directory lang ".user"))
-                           ",")))
+(defun make-hunspell-program-wrapper (main-dict)
+  (lambda (strings)
+    (let* ((user-dict (concat main-dict ".user"))
+           (user-dict-path (expand-file-name user-dict user-emacs-directory))
+           (dicts (mapconcat #'identity (list main-dict user-dict-path) ",")))
     (with-temp-buffer
       (dolist (string strings)
         (insert string)
@@ -157,7 +158,7 @@
         "hunspell" t t nil
         "-w"
         "-d" dicts)
-      (wcheck-parser-lines))))
+      (wcheck-parser-lines)))))
 
 (use-package wcheck-mode
   :ensure t
@@ -166,8 +167,8 @@
   (add-to-list 'wcheck-language-data-defaults
     '(action-parser . wcheck-parser-ispell-suggestions))
   (add-all-to-list 'wcheck-language-data
-    '("American English"
-      (program . hunspell-program-wrapper)
+    `("American English"
+      (program . ,(make-hunspell-program-wrapper "en_US"))
       (action-program . "C:/ProgramData/chocolatey/bin/hunspell.exe")
       (action-args "-a" "-d" "en_US")))
   (wcheck-change-language "American English" t))
