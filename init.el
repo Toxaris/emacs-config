@@ -171,6 +171,7 @@
       (program . ,(make-hunspell-program-wrapper "en_US"))
       (action-program . "C:/ProgramData/chocolatey/bin/hunspell.exe")
       (action-args "-a" "-d" "en_US")))
+  (set-variable 'wcheck--timer-idle 0.1)
   (wcheck-change-language "American English" t))
 
 ; TEX
