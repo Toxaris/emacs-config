@@ -196,7 +196,11 @@
   (set-variable 'TeX-save-query nil)
   (add-hook 'TeX-mode-hook 'disable-input-method)
   (add-hook 'TeX-mode-hook 'lhs2tex-setup)
-  (set-variable 'TeX-auto-save t)
+  (set-variable 'TeX-auto-save t))
+
+(use-package latex
+  :defer
+  :config
   (font-lock-add-keywords 'latex-mode
     `(("^\\(%include\\) \\(\\.*[^#}%\\\\\\.\n\r]+\\)\\(\\.[^#}%\\\\\\.\n\r]+\\)?"
        (1 font-lock-keyword-face prepend)
