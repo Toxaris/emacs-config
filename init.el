@@ -212,6 +212,19 @@
        (1 font-lock-keyword-face prepend)
        (2 font-lock-constant-face prepend)))))
 
+(use-package font-latex
+  :defer
+  :config
+  (add-all-to-list 'font-latex-syntactic-keywords-extra
+    '("\\(@\\)\\([^@]*\\)\\(@\\)"
+      (1 "\"" t)
+      (2 "." t)
+      (3 "\"" t))
+    '("\\(|\\)\\([^|]*\\)\\(|\\)"
+      (1 "\"" t)
+      (2 "." t)
+      (3 "\"" t))))
+
 (use-package bibtex
   :defer
   :config
