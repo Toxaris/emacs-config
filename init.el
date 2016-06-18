@@ -237,13 +237,13 @@
   :config
   (font-lock-add-keywords 'latex-mode
     `(("^\\(%include\\) \\(\\.*[^#}%\\\\\\.\n\r]+\\)\\(\\.[^#}%\\\\\\.\n\r]+\\)?"
-       (1 font-lock-keyword-face prepend)
+       (1 font-lock-preprocessor-face prepend)
        (2 font-lock-constant-face prepend)
        (3 font-lock-constant-face prepend))
       (,(concat "^" (regexp-opt (list "%{" "%}" "%endif") t))
-       (1 font-lock-keyword-face prepend))
+       (1 font-lock-preprocessor-face prepend))
       ("^\\(%if\\) \\([^\n\r]*\\)"
-       (1 font-lock-keyword-face prepend)
+       (1 font-lock-preprocessor-face prepend)
        (2 font-lock-constant-face prepend)))))
 
 (use-package font-latex
