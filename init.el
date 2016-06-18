@@ -228,6 +228,7 @@
   (add-hook 'TeX-mode-hook 'disable-input-method)
   (add-hook 'TeX-mode-hook 'lhs2tex-setup)
   (add-hook 'TeX-mode-hook 'guess-and-set-TeX-master)
+  (add-hook 'TeX-mode-hook 'turn-on-reftex)
   (set-variable 'TeX-parse-self t)
   (set-variable 'TeX-auto-save t))
 
@@ -273,7 +274,8 @@
   (add-all-to-list 'reftex-default-bibliography
     "bib/tsr.bib"
     "../bib/tsr.bib"
-    "../../bib/tsr.bib"))
+    "../../bib/tsr.bib")
+  (setq reftex-plug-into-AUCTeX t))
 
 ; CUSTOM
 ; ======
