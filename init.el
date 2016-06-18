@@ -236,18 +236,18 @@
   :defer
   :config
   (font-lock-add-keywords 'latex-mode
-    `(("^\\(%include\\) \\(\\.*[^#}%\\\\\\.\n\r]+\\)\\(\\.[^#}%\\\\\\.\n\r]+\\)?"
+    `(("^\\(%include\\)[ \t]+\\(\\.*[^#}%\\\\\\.\n\r]+\\)\\(\\.[^#}%\\\\\\.\n\r]+\\)?"
        (1 font-lock-preprocessor-face prepend)
        (2 font-lock-constant-face prepend)
        (3 font-lock-constant-face prepend))
       (,(concat "^" (regexp-opt (list "%{" "%}" "%endif" "%else") t))
        (1 font-lock-preprocessor-face prepend))
-      ("^\\(%format\\) \\(\\([^ \t\n\r]+[0-9']\\)\\|\\([^ \t\n\r]*[^ \t\n\r0-9']\\)\\)\\(\\([ \t]+\\([^= \t\n\r]\\|[^ \t\n\r][^ \t\n\r]+\\)\\)*\\)[ \t]*$"
+      ("^\\(%format\\)[ \t]+\\(\\([^ \t\n\r]+[0-9']\\)\\|\\([^ \t\n\r]*[^ \t\n\r0-9']\\)\\)\\(\\([ \t]+\\([^= \t\n\r]\\|[^ \t\n\r][^ \t\n\r]+\\)\\)*\\)[ \t]*$"
        (1 font-lock-preprocessor-face prepend)
        (3 font-lock-function-name-face prepend t)
        (4 font-lock-warning-face prepend t)
        (5 font-lock-warning-face prepend t))
-      ("^\\(%format\\) \\(\\([^ \t\n\r]+[ \t]+\\)+\\)\\(=\\)\\([ \t]\\|$\\)"
+      ("^\\(%format\\)[ \t]+\\(\\([^ \t\n\r]+[ \t]+\\)+\\)\\(=\\)\\([ \t]\\|$\\)"
        (1 font-lock-preprocessor-face prepend)
        (2 font-lock-function-name-face prepend)
        (4 font-lock-preprocessor-face prepend)
@@ -255,7 +255,7 @@
          (1 font-lock-string-face prepend t)
          (2 font-lock-function-name-face prepend t)
          (3 font-lock-warning-face prepend t)))
-      ("^\\(%if\\) \\([^\n\r]*\\)"
+      ("^\\(%if\\)[ \t]+\\([^\n\r]*\\)"
        (1 font-lock-preprocessor-face prepend)
        (2 font-lock-constant-face prepend)))))
 
