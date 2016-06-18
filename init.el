@@ -240,7 +240,7 @@
        (1 font-lock-preprocessor-face prepend)
        (2 font-lock-constant-face prepend)
        (3 font-lock-constant-face prepend))
-      (,(concat "^" (regexp-opt (list "%{" "%}" "%endif") t))
+      (,(concat "^" (regexp-opt (list "%{" "%}" "%endif" "%else") t))
        (1 font-lock-preprocessor-face prepend))
       ("^\\(%if\\) \\([^\n\r]*\\)"
        (1 font-lock-preprocessor-face prepend)
