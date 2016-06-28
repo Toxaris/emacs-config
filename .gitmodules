@@ -13,3 +13,6 @@
 [submodule "use-package"]
 	path = use-package
 	url = https://github.com/jwiegley/use-package
+[submodule "sublimity"]
+	path = sublimity
+	url = https://github.com/Toxaris/sublimity

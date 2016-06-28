@@ -429,6 +429,20 @@
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 
+; SCROLLING
+; =========
+
+(use-package sublimity-scroll
+  :load-path "sublimity"
+  :ensure sublimity
+  :config
+  (set-variable 'sublimity-scroll-weight 10)
+  (set-variable 'sublimity-scroll-drift-length 6)
+  (sublimity-mode t))
+
+(set-variable 'mouse-wheel-scroll-amount '(15 ((shift) . nil)))
+(set-variable 'mouse-wheel-progressive-speed nil)
+
 ; HASKELL
 ; =======
 
