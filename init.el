@@ -50,13 +50,16 @@
 (use-package icicles
   :ensure t)
 
-(use-package magit
-  :ensure t)
-
 (use-package dtrt-indent
   :ensure t
   :config
   (dtrt-indent-mode t))
+
+; MAGIT
+; =====
+
+(use-package magit
+  :ensure t)
 
 ; GREP
 ; ====
