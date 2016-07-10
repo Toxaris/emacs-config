@@ -307,7 +307,6 @@
  '(agda2-include-dirs (quote ("." "c:\\Users\\Tillmann\\Documents\\GitHub\\agda-stdlib\\src")))
  '(compilation-auto-jump-to-first-error t)
  '(compilation-scroll-output (quote first-error))
- ; '(default-input-method "Agda")
  '(fill-column 65)
  '(icicle-Completions-text-scale-decrease 0.0)
  '(indent-tabs-mode nil)
@@ -358,6 +357,7 @@
   (when (file-exists-p agda-mode-path)
     (load agda-mode-path)
     (require 'agda-input)
+    (set-variable 'default-input-method "Agda")
     (require 'two-mode-mode)
     (add-to-list 'auto-mode-alist
       '("\\.lagda\\'" . two-mode-mode))))
