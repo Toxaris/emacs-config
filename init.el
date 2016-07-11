@@ -217,6 +217,21 @@
   (set-variable 'wcheck--timer-idle 0.1)
   (wcheck-change-language "American English" t))
 
+;;; etags
+
+; from http://www.emacswiki.org/emacs/EmacsTags
+(defun view-tag-other-window (arg)
+  "Same as `find-tag-other-window' but doesn't move the point"
+  (interactive "P")
+  (let ((window (get-buffer-window)))
+    (if arg
+        (find-tag-other-window nil t)
+      (call-interactively 'find-tag-other-window))
+    (recenter 0)
+    (select-window window)))
+
+(global-set-key (kbd "M-.") 'view-tag-other-window)
+
 ;;; TeX
 
 (use-package tex-site
@@ -365,21 +380,6 @@
  '(fixed-pitch ((t (:family "FreeMono"))))
  '(italic ((t (:underline nil :slant italic))))
  '(variable-pitch ((t (:family "FreeSerif")))))
-
-;; etags
-
-; from http://www.emacswiki.org/emacs/EmacsTags
-(defun view-tag-other-window (arg)
-  "Same as `find-tag-other-window' but doesn't move the point"
-  (interactive "P")
-  (let ((window (get-buffer-window)))
-    (if arg
-        (find-tag-other-window nil t)
-      (call-interactively 'find-tag-other-window))
-    (recenter 0)
-    (select-window window)))
-
-(global-set-key (kbd "M-.") 'view-tag-other-window)
 
 ;;; agda
 
