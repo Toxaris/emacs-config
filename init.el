@@ -86,6 +86,19 @@
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 
+;;; scrolling
+
+(use-package sublimity-scroll
+  :load-path "sublimity"
+  :ensure sublimity
+  :config
+  (set-variable 'sublimity-scroll-weight 10)
+  (set-variable 'sublimity-scroll-drift-length 6)
+  (sublimity-mode t))
+
+(set-variable 'mouse-wheel-scroll-amount '(15 ((shift) . nil)))
+(set-variable 'mouse-wheel-progressive-speed nil)
+
 ;;; dtrt-indent
 
 (use-package dtrt-indent
@@ -414,19 +427,6 @@
     (interactive)
     (newline-and-indent)
     (scala-indent:insert-asterisk-on-multiline-comment)))))
-
-;;; scrolling
-
-(use-package sublimity-scroll
-  :load-path "sublimity"
-  :ensure sublimity
-  :config
-  (set-variable 'sublimity-scroll-weight 10)
-  (set-variable 'sublimity-scroll-drift-length 6)
-  (sublimity-mode t))
-
-(set-variable 'mouse-wheel-scroll-amount '(15 ((shift) . nil)))
-(set-variable 'mouse-wheel-progressive-speed nil)
 
 ;;; haskell
 
