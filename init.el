@@ -232,6 +232,52 @@
 
 (global-set-key (kbd "M-.") 'view-tag-other-window)
 
+;;;; custom
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(agda2-ghci-options (quote ("-package Agda-2.3.0")))
+ '(agda2-include-dirs
+   (quote
+    ("." "c:\\Users\\Tillmann\\Documents\\GitHub\\agda-stdlib\\src")))
+ '(compilation-auto-jump-to-first-error t)
+ '(compilation-scroll-output (quote first-error))
+ '(fill-column 65)
+ '(indent-tabs-mode nil)
+ '(prolog-electric-colon-flag t)
+ '(prolog-electric-dot-flag t)
+ '(prolog-electric-dot-full-predicate-template t)
+ '(prolog-electric-newline-flag t)
+ '(prolog-electric-tab-flag t)
+ '(prolog-electric-underscore-flag t)
+ '(prolog-hungry-delete-key-flag t)
+ '(prolog-program-name
+   (quote
+    (((getenv "EPROLOG")
+      (eval
+       (getenv "EPROLOG")))
+     (eclipse "eclipse")
+     (mercury nil)
+     (sicstus "sicstus")
+     (swi "swipl")
+     (gnu "gprolog")
+     (t "prolog"))))
+ '(prolog-system (quote swi))
+ '(sbt:ansi-support (quote filter)))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "SystemWindow" :foreground "SystemWindowText" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "outline" :family "Source Code Pro"))))
+ '(fixed-pitch ((t (:family "Source Code Pro"))))
+ '(italic ((t (:underline nil :slant italic))))
+ '(variable-pitch ((t (:family "Source Sans Pro")))))
+
 ;;; TeX
 
 (use-package tex-site
@@ -346,40 +392,6 @@
     "../bib/tsr.bib"
     "../../bib/tsr.bib")
   (setq reftex-plug-into-AUCTeX t))
-
-;; custom
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(agda2-ghci-options (quote ("-package Agda-2.3.0")))
- '(agda2-include-dirs (quote ("." "c:\\Users\\Tillmann\\Documents\\GitHub\\agda-stdlib\\src")))
- '(compilation-auto-jump-to-first-error t)
- '(compilation-scroll-output (quote first-error))
- '(fill-column 65)
- '(indent-tabs-mode nil)
- '(prolog-electric-colon-flag t)
- '(prolog-electric-dot-flag t)
- '(prolog-electric-dot-full-predicate-template t)
- '(prolog-electric-newline-flag t)
- '(prolog-electric-tab-flag t)
- '(prolog-electric-underscore-flag t)
- '(prolog-hungry-delete-key-flag t)
- '(prolog-program-name (quote (((getenv "EPROLOG") (eval (getenv "EPROLOG"))) (eclipse "eclipse") (mercury nil) (sicstus "sicstus") (swi "swipl") (gnu "gprolog") (t "prolog"))))
- '(prolog-system (quote swi))
- '(sbt:ansi-support (quote filter)))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "SystemWindow" :foreground "SystemWindowText" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "FreeMono"))))
- '(fixed-pitch ((t (:family "FreeMono"))))
- '(italic ((t (:underline nil :slant italic))))
- '(variable-pitch ((t (:family "FreeSerif")))))
 
 ;;; agda
 
