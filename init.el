@@ -81,6 +81,11 @@
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
+;;; paren matching
+
+(show-paren-mode 1)
+(setq show-paren-style 'mixed)
+
 ;;; dtrt-indent
 
 (use-package dtrt-indent
@@ -409,11 +414,6 @@
     (interactive)
     (newline-and-indent)
     (scala-indent:insert-asterisk-on-multiline-comment)))))
-
-;;; paren matching
-
-(show-paren-mode 1)
-(setq show-paren-style 'mixed)
 
 ;;; scrolling
 
