@@ -147,7 +147,10 @@ Return the new window for BUFFER."
 (use-package magit
   :ensure t
   :config
-  (global-set-key (kbd "C-x g") 'magit-status))
+  (global-set-key (kbd "C-x g") 'magit-status)
+  (add-all-to-list 'display-buffer-alist
+    `(,(rx "*magit: ")
+      (display-buffer-full-frame))))
 
 ;;; grep
 
