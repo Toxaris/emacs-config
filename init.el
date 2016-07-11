@@ -307,6 +307,41 @@ Return the new window for BUFFER."
 
 ;;;; modes for specific file formats and computer languages
 
+;;; doc-view
+
+;; based on https://github.com/lunaryorn/.emacs.d
+;; by Sebastian Wiesner, GPLv3
+
+(use-package doc-view
+  :defer t
+  :config
+  (setq doc-view-resolution 300)
+  (defconst doc-view-mutool-program "mutool")
+
+  (defun doc-view-pdf->png-converter-mutool (pdf png page callback)
+    "Convert a PDF file to PNG at PAGE.
+
+After conversion invoke CALLBACK.  See `doc-view-start-process'
+for more information about CALLBACK."
+    (doc-view-start-process
+     "pdf->png" doc-view-mutool-program
+     `("draw"
+       ,(concat "-o" png)
+       ,(format "-r%d" (round doc-view-resolution))
+       ,pdf
+       ,@(if page `(,(format "%d" page))))
+     callback))
+
+  ;; If `mutool' exists use our own converter function to call "mutool draw".
+  ;; Otherwise check whether docview found mudraw and warn if it didn't
+  (if (executable-find doc-view-mutool-program)
+      (setq doc-view-pdf->png-converter-function
+            #'doc-view-pdf->png-converter-mutool)
+    ;; Warn if Doc View falls back to Ghostscript for rendering
+    (unless (eq doc-view-pdf->png-converter-function
+                'doc-view-pdf->png-converter-mupdf)
+      (warn "Doc View is not using mupdf!"))))
+
 ;;; TeX
 
 (use-package tex-site
