@@ -52,6 +52,13 @@
     'APPEND)
   (package-initialize))
 
+;;; CUA
+
+(use-package cua-base
+  :config
+  (set-variable 'cua-auto-tabify-rectangles nil)
+  (set-variable 'cua-enable-cua-keys t)
+  (cua-mode))
 
 ;;; icicles
 
@@ -130,14 +137,6 @@
 (use-package uniquify
   :config
   (set-variable 'uniquify-buffer-name-style 'forward))
-
-;;; CUA
-
-(use-package cua-base
-  :config
-  (set-variable 'cua-auto-tabify-rectangles nil)
-  (set-variable 'cua-enable-cua-keys t)
-  (cua-mode))
 
 ;;; spell checking
 
