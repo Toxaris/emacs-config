@@ -114,6 +114,11 @@
     (add-to-list 'load-path transpose-frame-path)
     (require 'transpose-frame)))
 
+;;; speed bar
+
+;; Bind s-s to show the speedbar as a window in the same frame
+(global-set-key (kbd "C-c C-s") 'sr-speedbar-toggle)
+
 ;;; magit
 
 (use-package magit
@@ -481,11 +486,6 @@
 ;; Highlight trailing whitespace
 (add-hook 'diff-mode-hook (lambda ()
   (set-variable 'show-trailing-whitespace t)))
-
-;;; speed bar
-
-;; Bind s-s to show the speedbar as a window in the same frame
-(global-set-key (kbd "C-c C-s") 'sr-speedbar-toggle)
 
 ;;; lisp
 
