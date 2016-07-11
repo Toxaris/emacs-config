@@ -63,7 +63,11 @@
 ;;; icicles
 
 (use-package icicles
-  :ensure t)
+  :ensure t
+  :config
+  (icy-mode)
+  (set-variable 'icicle-Completions-text-scale-decrease 0.0))
+
 ;;; dtrt-indent
 
 (use-package dtrt-indent
@@ -296,7 +300,6 @@
  '(compilation-auto-jump-to-first-error t)
  '(compilation-scroll-output (quote first-error))
  '(fill-column 65)
- '(icicle-Completions-text-scale-decrease 0.0)
  '(indent-tabs-mode nil)
  '(prolog-electric-colon-flag t)
  '(prolog-electric-dot-flag t)
@@ -393,10 +396,6 @@
     (interactive)
     (newline-and-indent)
     (scala-indent:insert-asterisk-on-multiline-comment)))))
-
-;;; icicle
-
-(icy-mode)
 
 ;;; disable some keybindings
 
