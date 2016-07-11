@@ -72,6 +72,10 @@
 
 (global-unset-key "\C-x\C-c")
 
+;;; un-disable commands
+
+(put 'downcase-region 'disabled nil)
+
 ;;; dtrt-indent
 
 (use-package dtrt-indent
@@ -490,7 +494,3 @@
 (put 'add-hook 'lisp-indent-function 1)
 (put 'set-variable 'lisp-indent-function 1)
 (put 'with-all-buffers 'lisp-indent-function 0)
-
-;;; un-disable commands
-
-(put 'downcase-region 'disabled nil)
