@@ -1,14 +1,12 @@
 ; -*- lexical-binding: t -*-
 
-; OPEN INIT FILE
-; ==============
+;;; command to open this initialization file
 
 (defun find-dot-emacs () (interactive)
   "Try to find and open the dot emacs file"
   (find-file "~/.emacs.d/init.el"))
 
-; STARTUP
-; =======
+;;; startup
 
 (tool-bar-mode -1)
 
@@ -17,28 +15,23 @@
 
 (set-variable 'inhibit-startup-screen t)
 
-; Start Server
-; ============
-
 (server-start)
 
-; SEARCH PATH
-; ===========
+;;; helper functions and macros
 
 (defmacro add-all-to-list (lst &rest elms)
   `(progn ,@(mapcar (lambda (elm) `(add-to-list ,lst ,elm)) elms)))
+
+;;; search path
 
 (add-all-to-list 'load-path
   (concat user-emacs-directory "lisp")
   (concat user-emacs-directory "use-package"))
 
-; USE-PACKAGE
-; ===========
+;;; package setup
 
 (require 'use-package)
 
-; MELPA
-; =====
 
 (require 'package)
 (add-to-list 'package-archives
@@ -46,25 +39,25 @@
   'APPEND)
 
 (package-initialize)
+;;; icicles
 
 (use-package icicles
   :ensure t)
+;;; dtrt-indent
 
 (use-package dtrt-indent
   :ensure t
   :config
   (dtrt-indent-mode t))
 
-; MAGIT
-; =====
+;;; magit
 
 (use-package magit
   :ensure t
   :config
   (global-set-key (kbd "C-x g") 'magit-status))
 
-; GREP
-; ====
+;;; grep
 
 (defun check-candidate-find (program)
   "Check whether a program appears to be GNU find."
@@ -79,8 +72,7 @@
       (check-candidate-find "c:/cygwin64/bin/find.exe"))
   "The path to a version of GNU find.")
 
-
-; Use Cygwin's find instead of Microsoft's find.
+;; Use Cygwin's find instead of Microsoft's find.
 (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
   "Use cygwin's find."
   (let ((null-device "/dev/null")
@@ -103,13 +95,11 @@
      (add-to-list 'grep-find-ignored-files
                   "*.agdai")))
 
-; GENERIC MODE
-; ============
+;;; generic mode
 
 (require 'generic-x)
 
-; MODIFIER KEYS
-; =============
+;;; modifier keys
 
 (setq w32-pass-lwindow-to-system nil 
       w32-pass-rwindow-to-system nil 
@@ -118,8 +108,7 @@
       w32-rwindow-modifier 'super ; Right Windows key 
       w32-apps-modifier 'hyper) ; Menu key
 
-; CONFIGURE INPUT METHODS
-; =======================
+;;; input method
 
 (defun disable-input-method ()
   (when current-input-method
@@ -131,15 +120,13 @@
 
 (add-hook 'text-mode-hook 'enable-input-method)
 
-; BUFFER NAMES
-; ============
+;;; buffer names
 
 (use-package uniquify
   :config
   (set-variable 'uniquify-buffer-name-style 'forward))
 
-; CUA
-; ===
+;;; CUA
 
 (use-package cua-base
   :config
@@ -147,8 +134,7 @@
   (set-variable 'cua-enable-cua-keys t)
   (cua-mode))
 
-; SPELL CHECKING
-; ==============
+;;; spell checking
 
 (defun make-hunspell-program-wrapper (main-dict)
   (lambda (strings)
@@ -179,8 +165,7 @@
   (set-variable 'wcheck--timer-idle 0.1)
   (wcheck-change-language "American English" t))
 
-; TEX
-; ===
+;;; TeX
 
 (use-package tex-site
   :ensure auctex)
@@ -295,8 +280,7 @@
     "../../bib/tsr.bib")
   (setq reftex-plug-into-AUCTeX t))
 
-; CUSTOM
-; ======
+;; custom
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -331,8 +315,7 @@
  '(italic ((t (:underline nil :slant italic))))
  '(variable-pitch ((t (:family "FreeSerif")))))
 
-; ETAGS
-; =====
+;; etags
 
 ; from http://www.emacswiki.org/emacs/EmacsTags
 (defun view-tag-other-window (arg)
@@ -347,10 +330,9 @@
 
 (global-set-key (kbd "M-.") 'view-tag-other-window)
 
-; AGDA MODE
-; =========
+;;; agda
 
-; Prepare for loading Agda mode and load Agda input method
+;; Prepare for loading Agda mode and load Agda input method
 (let ((agda-mode-path
        (let ((coding-system-for-read 'utf-8))
          (shell-command-to-string "agda-mode locate"))))
@@ -362,16 +344,14 @@
     (add-to-list 'auto-mode-alist
       '("\\.lagda\\'" . two-mode-mode))))
 
-; PTS MODE
-; ========
+;;; pts
 
 (let ((pts-mode-path (shell-command-to-string "pts --locate-emacs-mode")))
   (when (file-exists-p pts-mode-path)
     (add-to-list 'load-path pts-mode-path)
     (require 'pts-mode)))
 
-; SBT MODE
-; ========
+;;; sbt
 
 ; Activate sbt-mode in a submodule of the git repo.
 (let ((sbt-mode-path (concat user-emacs-directory "sbt-mode")))
@@ -388,8 +368,7 @@
   (local-set-key (kbd "C-c C-l") 'sbt-run-previous-command)
   (local-set-key (kbd "M-.") 'sbt-find-definitions)))
 
-; UROBORO MODE
-; ============
+;;; uroboro
 
 ; Activate uroboro-mode in a submodule of the git rep.
 (let ((uroboro-mode-path (concat user-emacs-directory "uroboro-mode")))
@@ -397,8 +376,7 @@
     (add-to-list 'load-path uroboro-mode-path)
     (require 'uroboro-mode)))
 
-; SCALA MODE
-; ==========
+;;; scala
 
 ; Activate scala-mode2 in a submodule of the git repo.
 (let ((scala-mode2-path (concat user-emacs-directory "scala-mode2")))
@@ -412,36 +390,29 @@
     (newline-and-indent)
     (scala-indent:insert-asterisk-on-multiline-comment)))))
 
-; ICICLE
-; ======
+;;; icicle
 
 (icy-mode)
 
-
-; CODING SYSTEM
-; =============
+;;; coding system
 
 (prefer-coding-system 'utf-8)
 
-; DISABLE SOME KEYBINDINGS
-; ========================
+;;; disable some keybindings
 
 (global-unset-key "\C-x\C-c")
 
-; ZOOMING
-; =======
+;;; zooming
 
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
-; PAREN MATCHING
-; ==============
+;;; paren matching
 
 (show-paren-mode 1)
 (setq show-paren-style 'mixed)
 
-; SCROLLING
-; =========
+;;; scrolling
 
 (use-package sublimity-scroll
   :load-path "sublimity"
@@ -454,8 +425,7 @@
 (set-variable 'mouse-wheel-scroll-amount '(15 ((shift) . nil)))
 (set-variable 'mouse-wheel-progressive-speed nil)
 
-; HASKELL
-; =======
+;;; haskell
 
 (use-package haskell-mode
   :ensure t
@@ -486,40 +456,35 @@
 (speedbar-add-supported-extension ".lhs")
 (speedbar-add-supported-extension ".hsc")
 
-; JEKYLL
-; ======
+;;; jekyll
 
-; TODO: how to activate only for jekyll projects
-; TODO: is this what I want?!
+;; TODO: how to activate only for jekyll projects
+;; TODO: is this what I want?!
 (use-package jekyll-modes
   :ensure t
   :mode ("\\.md$" . jekyll-markdown-mode)
   :mode ("\\.html" . jekyll-html-mode))
 
-; TRANSPOSE FRAME
-; ===============
+;;; transpose frame
 
-; Activate transpose-frame in a submodule of the git repo.
+;; Activate transpose-frame in a submodule of the git repo.
 (let ((transpose-frame-path (concat user-emacs-directory "transpose-frame")))
   (when (file-exists-p transpose-frame-path)
     (add-to-list 'load-path transpose-frame-path)
     (require 'transpose-frame)))
 
-; DIFF MODE
-; =========
+;;; diff
 
-; Highlight trailing whitespace
+;; Highlight trailing whitespace
 (add-hook 'diff-mode-hook (lambda ()
   (set-variable 'show-trailing-whitespace t)))
 
-; SPEED BAR
-; =========
+;;; speed bar
 
-; Bind s-s to show the speedbar as a window in the same frame
+;; Bind s-s to show the speedbar as a window in the same frame
 (global-set-key (kbd "C-c C-s") 'sr-speedbar-toggle)
 
-; LISP INDENTATION
-; ================
+;;; lisp
 
 (put 'add-to-list 'lisp-indent-function 1)
 (put 'add-all-to-list 'lisp-indent-function 1)
@@ -527,7 +492,6 @@
 (put 'set-variable 'lisp-indent-function 1)
 (put 'with-all-buffers 'lisp-indent-function 0)
 
-; NO-LONGER DISABLED COMMANDS
-; ===========================
+;;; un-disable commands
 
 (put 'downcase-region 'disabled nil)
