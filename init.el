@@ -26,6 +26,10 @@
       w32-rwindow-modifier 'super ; Right Windows key 
       w32-apps-modifier 'hyper) ; Menu key
 
+;;; coding system
+
+(prefer-coding-system 'utf-8)
+
 ;;; helper functions and macros
 
 (defmacro add-all-to-list (lst &rest elms)
@@ -393,10 +397,6 @@
 ;;; icicle
 
 (icy-mode)
-
-;;; coding system
-
-(prefer-coding-system 'utf-8)
 
 ;;; disable some keybindings
 
