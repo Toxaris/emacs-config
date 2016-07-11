@@ -156,20 +156,21 @@
      ad-do-it))
 (ad-activate 'grep-compute-defaults)
 
-(eval-after-load "grep"
-  '(progn
-     ;; Allow searching for agda files.
-     (add-to-list 'grep-files-aliases
-		  '("agda" . "*.agda *.lagda")
-		  t)
+(use-package grep
+  :defer t
+  :config
+  ;; Allow searching for agda files.
+  (add-to-list 'grep-files-aliases
+    '("agda" . "*.agda *.lagda")
+    t)
 
-     ;; Ignore cabal-dev sandbox directories.
-     (add-to-list 'grep-find-ignored-directories
-                  "cabal-dev")
+  ;; Ignore cabal-dev sandbox directories.
+  (add-to-list 'grep-find-ignored-directories
+    "cabal-dev")
 
-     ;; Ignore agda interface files.
-     (add-to-list 'grep-find-ignored-files
-                  "*.agdai")))
+  ;; Ignore agda interface files.
+  (add-to-list 'grep-find-ignored-files
+    "*.agdai"))
 
 ;;; generic mode
 
