@@ -45,13 +45,14 @@
 
 (require 'use-package)
 
+(use-package package
+  :config
+  (add-to-list 'package-archives
+    '("melpa" . "http://melpa.milkbox.net/packages/")
+    'APPEND)
+  (package-initialize))
 
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/")
-  'APPEND)
 
-(package-initialize)
 ;;; icicles
 
 (use-package icicles
