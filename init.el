@@ -68,6 +68,10 @@
   (icy-mode)
   (set-variable 'icicle-Completions-text-scale-decrease 0.0))
 
+;;; disable some keybindings
+
+(global-unset-key "\C-x\C-c")
+
 ;;; dtrt-indent
 
 (use-package dtrt-indent
@@ -396,10 +400,6 @@
     (interactive)
     (newline-and-indent)
     (scala-indent:insert-asterisk-on-multiline-comment)))))
-
-;;; disable some keybindings
-
-(global-unset-key "\C-x\C-c")
 
 ;;; zooming
 
