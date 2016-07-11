@@ -40,6 +40,22 @@
 (defmacro add-all-to-list (lst &rest elms)
   `(progn ,@(mapcar (lambda (elm) `(add-to-list ,lst ,elm)) elms)))
 
+;; based on http://www.lunaryorn.com/2016/04/28/fullscreen-magit-status.html
+;; and magit--display-buffer-fullframe in magit-mode.el
+(defun display-buffer-full-frame (buffer alist)
+  "Display BUFFER in fullscreen.
+
+ALIST is a `display-buffer' ALIST.
+
+Return the new window for BUFFER."
+  (let ((window (or (display-buffer-reuse-window buffer alist)
+                    (display-buffer-same-window buffer alist)
+                    (display-buffer-pop-up-window buffer alist)
+                    (display-buffer-use-some-window buffer alist))))
+    (when window
+      (delete-other-windows window))
+    window))
+
 ;;; search path
 
 (add-all-to-list 'load-path
