@@ -76,6 +76,11 @@
 
 (put 'downcase-region 'disabled nil)
 
+;;; zooming
+
+(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+
 ;;; dtrt-indent
 
 (use-package dtrt-indent
@@ -404,11 +409,6 @@
     (interactive)
     (newline-and-indent)
     (scala-indent:insert-asterisk-on-multiline-comment)))))
-
-;;; zooming
-
-(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
 ;;; paren matching
 
