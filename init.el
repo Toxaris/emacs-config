@@ -1,5 +1,10 @@
 ; -*- lexical-binding: t -*-
 
+;;;; important configuration
+
+;; done first so that it is available even if there is an error
+;; further down in the initialization file.
+
 ;;; command to open this initialization file
 
 (defun find-dot-emacs () (interactive)
@@ -67,6 +72,8 @@
   :config
   (icy-mode)
   (set-variable 'icicle-Completions-text-scale-decrease 0.0))
+
+;;;; general configuration
 
 ;;; disable some keybindings
 
@@ -277,6 +284,8 @@
  '(fixed-pitch ((t (:family "Source Code Pro"))))
  '(italic ((t (:underline nil :slant italic))))
  '(variable-pitch ((t (:family "Source Sans Pro")))))
+
+;;;; modes for specific file formats and computer languages
 
 ;;; TeX
 
