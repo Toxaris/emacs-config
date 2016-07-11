@@ -106,6 +106,14 @@
   :config
   (dtrt-indent-mode t))
 
+;;; transpose frame
+
+;; Activate transpose-frame in a submodule of the git repo.
+(let ((transpose-frame-path (concat user-emacs-directory "transpose-frame")))
+  (when (file-exists-p transpose-frame-path)
+    (add-to-list 'load-path transpose-frame-path)
+    (require 'transpose-frame)))
+
 ;;; magit
 
 (use-package magit
@@ -467,14 +475,6 @@
   :ensure t
   :mode ("\\.md$" . jekyll-markdown-mode)
   :mode ("\\.html" . jekyll-html-mode))
-
-;;; transpose frame
-
-;; Activate transpose-frame in a submodule of the git repo.
-(let ((transpose-frame-path (concat user-emacs-directory "transpose-frame")))
-  (when (file-exists-p transpose-frame-path)
-    (add-to-list 'load-path transpose-frame-path)
-    (require 'transpose-frame)))
 
 ;;; diff
 
