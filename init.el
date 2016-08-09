@@ -40,11 +40,113 @@
 (set-face-font 'default "Source Code Pro-14")
 (set-face-font 'variable-pitch "Source Sans Pro")
 
-(set-fontset-font t ?→ "Source Code Pro")
-(set-fontset-font t ?∀ "Source Code Pro")
-(set-fontset-font t ?∃ "Source Code Pro")
-(set-fontset-font t ?′ "Source Code Pro")
-(set-fontset-font t ?″ "Source Code Pro")
+;; ‐
+(set-fontset-font t (cons #x2010 #x2010) "Source Code Pro")
+
+;; ‒ – — ― ‖ ‗ ‘ ’ ‚ ‛ “ ” „
+(set-fontset-font t (cons #x2012 #x201E) "Source Code Pro")
+
+;; † ‡ •
+(set-fontset-font t (cons #x2020 #x2022) "Source Code Pro")
+
+;; …
+(set-fontset-font t (cons #x2026 #x2026) "Source Code Pro")
+
+;; ‰
+(set-fontset-font t (cons #x2030 #x2030) "Source Code Pro")
+
+;; ′ ″
+(set-fontset-font t (cons #x2032 #x2033) "Source Code Pro")
+
+;; ‵
+(set-fontset-font t (cons #x2035 #x2035) "Source Code Pro")
+
+;; ‹ › ※ ‼ ‽ ‾ ‿
+(set-fontset-font t (cons #x2039 #x203F) "Source Code Pro")
+
+;; ⁄
+(set-fontset-font t (cons #x2044 #x2044) "Source Code Pro")
+
+;; ⁰ ⁱ
+(set-fontset-font t (cons #x2070 #x2071) "Source Code Pro")
+
+;; ⁴ ⁵ ⁶ ⁷ ⁸ ⁹
+(set-fontset-font t (cons #x2074 #x207E) "Source Code Pro")
+
+;; ⁽ ⁾
+(set-fontset-font t (cons #x207D #x207E) "Source Code Pro")
+
+;; ₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉
+(set-fontset-font t (cons #x2080 #x2089) "Source Code Pro")
+
+;; ₍ ₎
+(set-fontset-font t (cons #x208D #x208E) "Source Code Pro")
+
+;; ⅐ ⅑ ⅒ ⅓ ⅔ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞
+(set-fontset-font t (cons #x2150 #x215E) "Source Code Pro")
+
+;; ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙
+(set-fontset-font t (cons #x2190 #x2199) "Source Code Pro")
+
+;; ⇐ ⇑ ⇒ ⇓
+(set-fontset-font t (cons #x21D0 #x21D3) "Source Code Pro")
+
+;; ∀
+(set-fontset-font t (cons #x2200 #x2200) "Source Code Pro")
+
+;; ∂ ∃
+(set-fontset-font t (cons #x2202 #x2203) "Source Code Pro")
+
+;; ∆
+(set-fontset-font t (cons #x2206 #x2206) "Source Code Pro")
+
+;; ∏
+(set-fontset-font t (cons #x220F #x220F) "Source Code Pro")
+
+;; ∑
+(set-fontset-font t (cons #x2211 #x2211) "Source Code Pro")
+
+;; −
+(set-fontset-font t (cons #x2212 #x2212) "Source Code Pro")
+
+;; ∕
+(set-fontset-font t (cons #x2215 #x2215) "Source Code Pro")
+
+;; ∙ √
+(set-fontset-font t (cons #x2219 #x221A) "Source Code Pro")
+
+;; ∞ ∟
+(set-fontset-font t (cons #x221E #x221F) "Source Code Pro")
+
+;; ∥
+(set-fontset-font t (cons #x2225 #x2225) "Source Code Pro")
+
+;; ≈
+(set-fontset-font t (cons #x2248 #x2248) "Source Code Pro")
+
+;; ≠ ≡
+(set-fontset-font t (cons #x2260 #x2261) "Source Code Pro")
+
+;; ≤ ≥
+(set-fontset-font t (cons #x2264 #x2265) "Source Code Pro")
+
+;; ⌐
+(set-fontset-font t (cons #x2310 #x2310) "Source Code Pro")
+
+;; ⌒
+(set-fontset-font t (cons #x2312 #x2312) "Source Code Pro")
+
+;; ⌜ ⌝ ⌞ ⌟
+
+(set-fontset-font t (cons #x231C #x231F) "Source Code Pro")
+
+;; ⌠ ⌡
+(set-fontset-font t (cons #x2320 #x2321) "Source Code Pro")
+
+;; ┡┅┅┅╾╼╃
+;; ╰╖╭╌╌╼┙
+;;  ╚╡
+(set-fontset-font t (cons #x2500 #x257F) "Source Code Pro")
 
 ;;; helper functions and macros
 
