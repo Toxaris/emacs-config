@@ -497,7 +497,14 @@ for more information about CALLBACK."
     (set-variable 'default-input-method "Agda")
     (require 'two-mode-mode)
     (add-to-list 'auto-mode-alist
-      '("\\.lagda\\'" . two-mode-mode))))
+                 '("\\.lagda\\'" . two-mode-mode))
+
+    (use-package agda2-highlight
+      :defer t
+      :config
+      (set-face-attribute 'agda2-highlight-keyword-face nil
+                          :family "Source Code Pro Medium"))))
+
 
 ;;; pts
 
