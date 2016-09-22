@@ -692,7 +692,12 @@ for more information about CALLBACK."
 (use-package jekyll-modes
   :ensure t
   :mode ("\\.md$" . jekyll-markdown-mode)
-  :mode ("\\.html" . jekyll-html-mode))
+  :mode ("\\.html" . jekyll-html-mode)
+  :config
+  (use-package markdown-mode
+    :ensure t)
+  (use-package yaml-mode
+    :ensure t))
 
 ;;; diff
 
