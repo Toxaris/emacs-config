@@ -148,6 +148,9 @@
 ;;  ╚╡
 (set-fontset-font t (cons #x2500 #x257F) "Source Code Pro")
 
+;; ⟤ ⟥ ⟦ ⟧ ⟨ ⟩ ⟪ ⟫
+(set-fontset-font t (cons #x27E4 #x27EB) "FreeMono")
+
 ;;; helper functions and macros
 
 (defmacro add-all-to-list (lst &rest elms)
