@@ -268,6 +268,12 @@ Return the new window for BUFFER."
     `(,(rx "*magit: ")
       (display-buffer-full-frame))))
 
+;;; vc-git
+
+(use-package vc-git
+  :defer t
+  :bind ("M-s g" . vc-git-grep))
+
 ;;; grep
 
 (defun check-candidate-find (program)
