@@ -457,6 +457,34 @@ Return the new window for BUFFER."
  '(prolog-system (quote swi))
  '(sbt:ansi-support (quote filter)))
 
+;;; yasnippets
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
+
+(defun company-backend-add-yasnippet (backend)
+  (if (listp backend)
+      (if (member 'company-yasnippet backend)
+          backend
+        `(,@backend :with company-yasnippet))
+    `(,backend :with company-yasnippet)))
+
+;;; company
+
+(use-package company
+  :ensure t
+  :config
+  (set-variable 'company-frontends
+    '(company-pseudo-tooltip-frontend
+      company-echo-metadata-frontend))
+  (add-hook 'after-init-hook
+    (lambda ()
+      (global-company-mode)
+      (set-variable 'company-backends
+        (mapcar #'company-backend-add-yasnippet company-backends)))))
+
 ;;;; modes for specific file formats and computer languages
 
 ;;; doc-view
