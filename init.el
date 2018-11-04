@@ -689,6 +689,13 @@ for more information about CALLBACK."
     (newline-and-indent)
     (scala-indent:insert-asterisk-on-multiline-comment)))))
 
+;;; groovy
+
+(use-package groovy-mode
+  :ensure t
+  :defer)
+
+
 ;;; haskell
 
 (use-package haskell-mode
