@@ -695,6 +695,11 @@ for more information about CALLBACK."
   :ensure t
   :defer)
 
+;;; elm
+
+(use-package elm-mode
+  :ensure t
+  :defer)
 
 ;;; haskell
 
