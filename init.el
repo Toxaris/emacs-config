@@ -540,7 +540,7 @@ for more information about CALLBACK."
   :config
   (add-all-to-list 'TeX-command-list
     '("Make" "make.bat --batch" TeX-run-TeX nil t :help "Call make.bat")
-    '("Texify" "texify --batch --pdf --run-viewer %t" TeX-run-TeX nil t :help "Texify file and view result"))
+    '("Texify" "texify --batch --pdf %S %t" TeX-run-TeX nil t :help "Texify file and view result"))
   (TeX-PDF-mode t)
   (set-variable 'tex-fontify-script nil)
   (set-variable 'TeX-save-query nil)
@@ -548,6 +548,19 @@ for more information about CALLBACK."
   (add-hook 'TeX-mode-hook 'lhs2tex-setup)
   (add-hook 'TeX-mode-hook 'guess-and-set-TeX-master)
   (add-hook 'TeX-mode-hook 'turn-on-reftex)
+  (let ((sumatra-pdf-path "C:/Program Files/SumatraPDF/SumatraPDF.exe"))
+    (when (file-exists-p sumatra-pdf-path)
+      (set-variable 'TeX-source-correlate-mode t)
+      (set-variable 'TeX-source-correlate-method 'synctex)
+      (add-to-list 'TeX-view-program-list
+        `("SumatraPDF"
+          ("\""
+           ,sumatra-pdf-path
+           "\" -reuse-instance"
+           (mode-io-correlate " -forward-search \"%b\" %n")
+           " %o")))
+      (assq-delete-all 'output-pdf TeX-view-program-selection)
+      (add-to-list 'TeX-view-program-selection '(output-pdf "SumatraPDF"))))
   (set-variable 'TeX-parse-self t)
   (set-variable 'TeX-auto-save t))
 
