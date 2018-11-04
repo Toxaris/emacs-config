@@ -22,6 +22,10 @@
 
 (server-start)
 
+;;; lock files
+
+(set-variable 'create-lockfiles nil)
+
 ;;; modifier keys
 
 (setq w32-pass-lwindow-to-system nil 
